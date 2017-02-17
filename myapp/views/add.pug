@@ -1,0 +1,27 @@
+extends layout.pug
+
+block title
+	title= title
+
+block content
+	div(class='col-md-6')
+		each message in messages
+			p(class='bg-danger')= message
+		form(method='POST' action='/users/add_update_user')
+			input(name='_id' type='hidden' value=_id)
+			div(class='form-group')
+				label User Name
+				- var ro = (user.username ? true : false)
+				input(name='username' readonly=ro type='text' class='form-control' placeholder='User Name' required value=user.username)
+
+			div(class='form-group')
+				label Password
+				input(name='password' type='password' class='form-control' placeholder='Password' required value=user.password)
+				
+			div(class='form-group')
+				label Profession
+				input(name='profession' type='text' class='form-control' placeholder='Profession' required value=user.profession)
+			
+			div(class='form-group')
+				button(class='btn btn-default' type='submit') Submit
+				a(class='btn btn-default' href='/') Cancel

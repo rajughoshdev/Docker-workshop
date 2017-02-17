@@ -1,0 +1,18 @@
+extends layout.pug
+
+block title
+	title= title
+
+block content
+	div(class='col-md-6')
+		dl(class='dl-horizontal')
+			dt ID
+			dd= user[0]._id
+			dt Name
+			dd= user[0].username
+			dt Password
+			dd= user[0].password
+			dt Profession
+			dd= user[0].profession
+
+		a(class='btn btn-default' href='/users') Back

@@ -1,0 +1,25 @@
+extends layout.pug
+
+block title
+	title= title
+
+block content
+	div(class='col-md-6')
+		each message in messages
+			p(class='bg-info')= message
+		table(class='table table-bordered')
+			tr
+				th Username
+				th Action
+			each user in users
+				tr
+					td= user.username
+					td 
+						a(class='btn btn-link' href='/users/view/'+user._id) View
+						a(class='btn btn-link' href='/users/edit/'+user._id) Edit
+						if sessuser._id != user._id
+							form(method='POST' action='/users/'+user._id style={'display': 'inline'})
+								input(name='_method' type='hidden' value='DELETE')
+								button(class='btn btn-link' type='submit') Delete
+
+	a(class='btn btn-default' href='/') Back

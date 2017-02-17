@@ -1,0 +1,18 @@
+extends layout.pug
+
+block title
+	title= title
+
+block content
+	div(id='homepage' class='col-md-6' style={border: '1px solid #ccc'})
+		a(class='btn btn-link' href='/users') List Users
+		a(class='btn btn-link' href='/users/add') Add User
+		if sessuser
+			a(class='btn btn-link' href='/logout') Logout
+	
+	div(class='clearfix')
+	
+	div(class='col-md-6' style={border: '1px solid #ccc'})
+		if sessuser
+			h4 Welcome #{sessuser.username}!
+		p This is a test application using Express framework.
